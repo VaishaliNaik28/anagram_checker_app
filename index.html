@@ -1,0 +1,58 @@
+<html>
+<head>
+	<title> Anagram App By Vaishali Naik </title>
+	<style>
+		* {font-size:50px;font-family:arial;}
+		body {background-color:lightpink;}
+	</style>
+</head>
+<body>
+<center>
+	<h1> Anagram Checker App </h1>
+	<form onsubmit="check()">
+	<input type="text" placeholder="enter first string" id="S1">
+	<br/><br/>
+	<input type="text" placeholder="enter second string" id="S2">
+	<br/><br/>
+	<input type="submit" value="check" />
+	<br/><br/>
+	<h2 id="msg" />
+	</form>
+	
+	<script>
+		function check()
+		{
+		event.preventDefault();
+		let S1 = document.getElementById("S1");
+		let S2 = document.getElementById("S2");
+		let msg = document.getElementById("msg");
+
+		if(S1.value.trim() == "")
+		{
+			alert("first string is empty");
+			msg.innerHTML = "";
+			S1.focus();
+			return;
+		}
+		if(S2.value.trim() == "")
+		{
+			alert("second string is empty");
+			msg.innerHTML = "";
+			S2.focus();
+			return;
+		}
+		let str1 = S1.value.toLowerCase();
+		let str2 = S2.value.toLowerCase();
+		
+		let nstr1 = str1.split("").sort().join("");
+		let nstr2 = str2.split("").sort().join("");
+
+		if(nstr1 == nstr2)
+			msg.innerHTML = "yes they are anagrams"; 
+		else
+			msg.innerHTML = "Nopes they are not anagrams";
+		}
+	</script>
+</center>
+</body>
+</html>
